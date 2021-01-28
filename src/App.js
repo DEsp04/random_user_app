@@ -5,22 +5,34 @@ import React, { useState, useEffect } from "react";
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null);
+  const [refresh, setRefresh] = useState(true);
 
   function refreshUser() { 
-    console.log("refresh")
+    if (refresh === false) { 
+      setRefresh(true);
+    }
   }
 
   
   useEffect(() => { 
     const search = async () => {
       const data = await fetchUser();
-
       setCurrentUser(data);
     }
 
-    search();
-  },[])
+  
+
+    if (refresh === true) { 
+      search();
+      setRefresh(false);
+    }
+
+    return function refreshUser(){ 
+      console.log("refresh")
+    }
+    
+  })
 
 
 
@@ -31,7 +43,7 @@ function App() {
       </header>
       
       <button onClick={() => { 
-       refreshUser()
+        refreshUser()
       }}>Refresh</button>
 
 
