@@ -1,6 +1,7 @@
 import './App.css';
 import fetchUser from "./services/rando_user";
 import React, { useState, useEffect } from "react";
+import UserSummary from "./components/UserSummary";
 
 
 function App() {
@@ -41,8 +42,8 @@ function App() {
         refreshUser()
       }}>Refresh</button>
 
-
-      <div>{JSON.stringify(currentUser)}</div> 
+      <UserSummary userData={currentUser} />
+      {/* <div>{JSON.stringify(currentUser)}</div>  */}
     </div>
   );
 }
