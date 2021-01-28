@@ -21,17 +21,12 @@ function App() {
       setCurrentUser(data);
     }
 
-  
-
     if (refresh === true) { 
       search();
       setRefresh(false);
     }
 
-    return function refreshUser(){ 
-      console.log("refresh")
-    }
-    
+
   })
 
 
